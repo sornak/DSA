@@ -12,13 +12,13 @@ function LargestArrayElementIndex(arr) {
 
 /* With Javascript InBuild */
 
-function LargestArrayElementIndex1(arr) {
+function LargestArrayElementIndex(arr) {
   let largestElement = Math.max(...arr);
   return arr.indexOf(largestElement);
 }
 
 let arr = [20, 19, 36, 10, 12];
-let result = LargestArrayElementIndex1(arr);
+let result = LargestArrayElementIndex(arr);
 console.log("LargestArrayElementIndex", result);
 
 /* Explanation (Without inbuilt library)
