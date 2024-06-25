@@ -6,7 +6,6 @@ function ReverseArray(arr) {
   let high = n - 1;
 
   while (low < high) {
-    console.log("sds", arr[low]);
     let temp = arr[low];
     arr[low] = arr[high];
     arr[high] = temp;
