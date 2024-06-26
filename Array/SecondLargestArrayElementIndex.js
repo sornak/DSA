@@ -19,6 +19,8 @@ function SecondLargestArrayElementIndex(arr) {
   return secondLargestIndex;
 }
 
+/* With Javascript InBuild */
+
 function SecondLargestArrayElementIndex(arr) {
   let sortedArray = [...arr].sort((a, b) => b - a);
   return arr.indexOf(sortedArray[1]);
