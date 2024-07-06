@@ -1,5 +1,3 @@
-/* With out Javascript InBuild */
-
 function Movezerostoend(arr) {
   let n = arr.length;
   let position = 0;
@@ -11,6 +9,28 @@ function Movezerostoend(arr) {
       position++;
     }
   }
+  return arr;
+}
+
+function Movezerostoendbrute(arr) {
+  let n = arr.length;
+  let temp = [];
+  for (i = 0; i < n; i++) {
+    if (arr[i] != 0) {
+      temp.push(arr[i]);
+    }
+  }
+
+  let n2 = temp.length;
+
+  for (i = 0; i < n2; i++) {
+    arr[i] = temp[i];
+  }
+
+  for (i = n2; i < n; i++) {
+    arr[i] = 0;
+  }
+
   return arr;
 }
 
@@ -26,12 +46,3 @@ function Movezerostoend1(arr) {
 let arr = [20, 90, 0, 8, 7, 0, 9];
 let result = Movezerostoend(arr);
 console.log("Movezerostoend", result);
-
-/* Explanation (Without inbuilt library)
-
- 1) Start from index 0; for loop and check if value !=0 if not  equal to zero swap and increment the position and check for next
-
- 2) Return Array once loop done
-
-
-*/

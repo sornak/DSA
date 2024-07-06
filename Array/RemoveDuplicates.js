@@ -1,6 +1,25 @@
-/* With out Javascript InBuild */
+function RemoveDuplicateBrute(arr) {
+  let n = arr.length;
+  let set = new Set();
+  for (let i = 0; i < n; i++) {
+    set.add(arr[i]);
+  }
+  return Array.from(set);
+}
 
-function RemoveDuplicates(arr) {
+function RemoveDuplicatesOptimal1(arr) {
+  let n = arr.length;
+  let i = 0;
+  for (let j = 1; j < n; j++) {
+    if (arr[i] != arr[j]) {
+      arr[i + 1] = arr[j];
+      i++;
+    }
+  }
+  return arr.slice(0, i + 1);
+}
+
+function RemoveDuplicatesOptimal2(arr) {
   let n = arr.length;
   let hashmap = {};
   let result = [];
@@ -14,7 +33,7 @@ function RemoveDuplicates(arr) {
   return result;
 }
 
-function RemoveDuplicates(arr) {
+function RemoveDuplicatesInbuild(arr) {
   let remove_duplicate = new Set(arr);
   //return remove_duplicate;
 
@@ -23,14 +42,6 @@ function RemoveDuplicates(arr) {
 
 /* With Javascript InBuild */
 
-let arr = [0, 0, 1, 1, 2, 2, 3, 3, 4];
-let result = RemoveDuplicates(arr);
+let arr = [1, 1, 2];
+let result = RemoveDuplicatesOptimal1(arr);
 console.log("RemoveDuplicates", result);
-
-/* Explanation (Without inbuilt library)
-
-  1) Create a hashmap to mark the already visited item. if not that element in hashmap push ito hashmap and array
-
-  2) hashmap push is to chekc that item is already visited item or not
-
-*/

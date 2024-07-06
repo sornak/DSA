@@ -1,4 +1,32 @@
-/* With out Javascript InBuild */
+function RightRotatebyOnePlace(arr) {
+  let n = arr.length;
+  let temp = arr[n - 1];
+  for (i = n - 1; i > 0; i--) {
+    arr[i] = arr[i - 1];
+  }
+  arr[0] = temp;
+  return arr;
+}
+
+function RightRotationBruteForce(arr, d) {
+  let n = arr.length;
+  d = d % n;
+
+  let temp = [];
+  for (let i = d; i < n; i++) {
+    temp.push(arr[i]);
+  }
+
+  for (i = 0; i < d; i++) {
+    temp.push(arr[i]);
+  }
+
+  for (i = 0; i < n; i++) {
+    arr[i] = temp[i];
+  }
+
+  return arr;
+}
 
 function RightRotationwithCount(arr, d) {
   let n = arr.length;
@@ -32,8 +60,8 @@ function RightRotationwithCount1(arr, d) {
   return arr.slice(d + 1).concat(arr.slice(0, d + 1));
 }
 
-let arr = [20, 50, 10, 80, 90];
-let result = RightRotationwithCount1(arr, 2);
+let arr = [1, 2, 3, 4, 5, 6, 7];
+let result = RightRotationBruteForce(arr, 3);
 console.log("RightRotationwithCount", result);
 
 /* Explanation (Without inbuilt library)

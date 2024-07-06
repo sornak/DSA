@@ -1,43 +1,46 @@
-/* With out Javascript InBuild */
+/* Brute Force */
 
-function SecondLargestArrayElementIndex(arr) {
+function SecondLargestArrayElementIndexBrute(arr) {
   let n = arr.length;
-  let largestIndex = 0;
-  let secondLargestIndex = -1;
+  let largest = arr[0];
+  let secondlargest = Number.MIN_VALUE;
   for (let i = 0; i < n; i++) {
-    if (arr[i] != arr[largestIndex]) {
-      if (arr[i] > arr[largestIndex]) {
-        secondLargestIndex = largestIndex;
-        largestIndex = i;
-      } else if (arr[i] < arr[largestIndex]) {
-        if (secondLargestIndex == -1 || arr[i] > arr[secondLargestIndex]) {
-          secondLargestIndex = i;
-        }
-      }
+    if (arr[i] > largest) {
+      largest = arr[i];
     }
   }
-  return secondLargestIndex;
+  for (let i = 0; i < n; i++) {
+    if (arr[i] < largest && arr[i] > secondlargest) {
+      secondlargest = arr[i];
+    }
+  }
+
+  return secondlargest;
+}
+
+function SecondLargestArrayElementIndexOptimal(arr) {
+  let n = arr.length;
+  let largest = arr[0];
+  let secondlargest = -1;
+  for (i = 1; i < n; i++) {
+    if (arr[i] > largest) {
+      secondlargest = largest;
+      largest = arr[i];
+    } else if (arr[i] < largest && arr[i] > secondlargest) {
+      secondlargest = arr[i];
+    }
+  }
+
+  return secondlargest;
 }
 
 /* With Javascript InBuild */
 
-function SecondLargestArrayElementIndex(arr) {
+function SecondLargestArrayElementIndexInbuild(arr) {
   let sortedArray = [...arr].sort((a, b) => b - a);
   return arr.indexOf(sortedArray[1]);
 }
 
 let arr = [20, 19, 136, 110, 12];
-let result = SecondLargestArrayElementIndex(arr);
+let result = SecondLargestArrayElementIndexOptimal(arr);
 console.log("SecondLargestArrayElementIndex", result);
-
-/* Explanation (Without inbuilt library)
-
-  1) Assume 0th index have largest element.
-
-  2) Have secondlargest as -1 as we have no idea initally
-
-  3) have two condition looping if current element greater than largest in this replace largest with current index and second largets with already largest
-
-  4) if current element is less than largest, needs to check if secondlargest==-1 or current element is greater than second largest index element if yes replace already existing secondlargest with current index
-
-*/

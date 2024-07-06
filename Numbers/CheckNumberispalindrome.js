@@ -1,6 +1,8 @@
 /* With out Javascript InBuild */
 
 function CheckNumberispalindrome(number) {
+  if (number < 0) return 0;
+
   let original = number;
   let reverse = 0;
 
@@ -8,7 +10,7 @@ function CheckNumberispalindrome(number) {
     reverse = reverse * 10 + (number % 10);
     number = Math.floor(number / 10);
   }
-  return original == reverse;
+  return original === reverse ? 1 : 0;
 }
 
 /* With Javascript InBuild */
